@@ -1,4 +1,4 @@
-module go_learning
+module go_learning_note
 
 go 1.19
 
