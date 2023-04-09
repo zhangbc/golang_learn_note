@@ -10,11 +10,6 @@ import (
 * 数字类型
  */
 func TestNumber() {
-	count := 10
-	for i := 0; i < count; i++ {
-		fmt.Printf("i=%v\n", i)
-	}
-
 	// 数字类型
 	var i8 int
 	var i16 int16

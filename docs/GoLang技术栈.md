@@ -91,7 +91,13 @@ go version go1.19.1 darwin/amd64
 # 初始化项目
 ☁  go_learning_note  go mod init go_learning_note
 # 下载包
-☁  go_learning_note  go get github.com/go-sql-driver/mysql                                                      
+☁  go_learning_note  go get github.com/go-sql-driver/mysql
+# 编译
+☁  golang_learn_note [go_basic_note] ⚡  go build main.go
+# 运行
+☁  golang_learn_note [go_basic_note] ⚡  go run main.go  
+# 清除对象
+☁  golang_learn_note [go_basic_note] ⚡  go clean 
 ```
 
 - 标识符
@@ -274,7 +280,7 @@ const (
 
 - `Go` 语言布尔类型
 
-> `go` 语言中布尔类型有两个常量值：`true` 和 `false` ，布尔类型经常用于条件判断语句，或循环语句，或用于逻辑表达式中。		
+	 `go` 语言中布尔类型有两个常量值：`true` 和 `false` ，布尔类型经常用于条件判断语句，或循环语句，或用于逻辑表达式中。		
 >
 > **注意**：不能使用 0 和 非0 表示真假 
 
@@ -332,13 +338,148 @@ if condition {
 
 - `GoLang` 字符串
 
-一个 `Go` 语言字符串是一个任意字节的常量序列。
+一个 `Go` 语言字符串是一个任意**字节的常量序列**。
 
 在 `Go` 语言中，字符串字面量使用双引号 `""` 或反引号 `'` 来创建。
 
 > 双引号 `""` ：创建可解析的字符串，支持转义，但不能用来引用多行；
 >
 > 反引号 `'` ：创建原生的字符串字面量，可能由多行组成，但不支持转义。	
+
+转义字符
+
+> `Go` 语言的字符串常见转义字符包括回车，换行，单双引号，制表符，反斜杠等。
+
+字符串的切片操作
+
+```go
+// 字符串的切片操作
+str_split := "Hello World"
+start := 2
+end := 5
+fmt.Printf("str_split[start]: %c\n", str_split[start])
+fmt.Printf("str_split[start:end]: %v\n", str_split[start:end])
+fmt.Printf("str_split[start:]: %v\n", str_split[start:])
+```
+
+字符串函数
+
+```go
+// 字符串函数
+fmt.Printf("len(str_split): %v\n", len(str_split))
+fmt.Printf("strings.Split(str_split, \" \"): %v\n", strings.Split(str_split, " "))
+fmt.Printf("strings.Contains(str_join, \"Hello\"): %v\n", strings.Contains(str_join, "Hello"))
+fmt.Printf("strings.ToLower(str_split): %v\n", strings.ToLower(str_split))
+fmt.Printf("strings.ToUpper(str_split): %v\n", strings.ToUpper(str_split))
+fmt.Printf("strings.HasPrefix(str_split, \"Hello\"): %v\n", strings.HasPrefix(str_split, "Hello"))
+fmt.Printf("strings.HasSuffix(str_split, \"world\"): %v\n", strings.HasSuffix(str_split, "world"))
+fmt.Printf("strings.Index(str_split, \"ll\"): %v\n", strings.Index(str_split, "ll"))
+```
+
+字符串格式化输出
+
+```go
+// 格式化输出
+site := WebSite{Name: "douke360"}
+fmt.Printf("site: %v\n", site)
+fmt.Printf("site: %#v\n", site)
+fmt.Printf("site: %T\n", site)
+```
+
+- `GoLang` 运算符
+
+1. 算术运算符
+
+> +（相加），-（相减），*（相乘），/（相除），%（求余）
+>
+> ++（自增），--（自减）在 `Go` 语言中说单独的语句，并不是运算符
+
+2. 关系运算符
+
+> ==、!=、>、>=、<、<=
+
+3. 逻辑运算符
+
+> &&、||、!
+
+4. 位运算符
+
+> &、|、^、>>（右移，除）、<<（左移，乘）
+
+5. 赋值运算符
+
+> =、+=、-=、*=、/=、%=、<<=、>>=、&=、|=、^=
+
+- `Go` 语言中的流程控制
+
+  **条件语句** 是用来判断给定的条件是否满足（表达式是否为 `true` 或 `false`），并根据判断的结果（真或假）决定执行的语句。
+
+  > **`if` 语句** ：由一个布尔表达式后紧跟一个或多个语句组成；
+  >
+  > > 初始变量可以声明在布尔表达式里面，注意它的作用域；
+  > >
+  > > 不需使用括号将条件包含起来；
+  > >
+  > > 大括号必须存在，即使只有一行语句；
+  > >
+  > > 左括号必须在 `if` 或 `else` 的同一行；
+  > >
+  > > 在 `if` 之后，条件语句之前，可以添加变量初始化语句，使用 `:` 进行分隔
+  >
+  > **`if...else` 语句** ：`if` 语句后使用可选的 `else` 语句，`else` 语句中的表达式在布尔表达式为 `false` 时执行；
+  >
+  > **`if` 嵌套语句**：可以在 `if` 或 `else if` 语句中嵌入一个或多个 `if` 或 `else if` 语句；
+  >
+  > **`switch` 语句**：用于基于不同条件表达式执行不同动作；
+  >
+  > > 支持多条件匹配；
+  > >
+  > > 不同的 `case` 之间不使用 `break` 分隔，默认只会执行一个 `case`；
+  > >
+  > > 如果想要执行多个 `case`，需要使用 `fallthrough` 关键字，也可以使用 `break` 终止；
+  > >
+  > > 分支可以使用**表达式**，如 `a > 18`
+  >
+  > **`select` 语句**：类似于 `switch` 语句，但是 `select` 语句会随机执行一个可运行的 `case`，如果没有 `case` 可运行，它将阻塞，直到有 `case` 可运行。  
+
+`Go` 语言中的循环只有 `for` 循环，去除了 `while`、`do while` 循环，使用起来更加简洁。
+
+```go
+# 永真循环
+for {
+		fmt.Printf("for: %v\n", "run....")
+	}
+```
+
+`Go` 语言中可以使用 `for range` 遍历数组、切片、字符串、`map` 及通道（`channel`），通过 `for range` 遍历的返回值有如下规律：
+
+> 数组、切片、字符串返回索引和值；
+>
+> `map` 返回键和值；
+>
+> 通道（`channel`）只返回通道内的值
+
+流程控制关键字：`break、continue、goto`
+
+> `break`：可以结束 `for`、`switch`、`select` 的代码块
+>
+> > 单独在 `select` 语句中使用 `break` 和不使用 `break` 没有区别；
+> >
+> > 单独在表达式 `switch` 语句并且没有 `fallthough` 中使用 `break` 和不使用 `break` 没有区别；
+> >
+> > 单独在表达式 `switch` 语句并且有 `fallthough` 中使用 `break` 能够终止`fallthough` 后面的 `case` 语句的执行；
+> >
+> > 带标签的 `break`，可以跳出多层 `select /switch` 作用域
+>
+> `continue`：只能用在循环中，在 `go` 中只能用在 `for` 循环中，可以终止本次循环，进行下一次循环；在`continue` 语句后添加标签时，表示开始标签对应的循环。
+>
+> `goto`：通过标签进行代码间的 **无条件跳转**，在快速跳出循环、避免重复退出上有一定的帮助。
+
+
+
+
+
+
 
 
 
