@@ -445,7 +445,7 @@ fmt.Printf("site: %T\n", site)
 `Go` 语言中的循环只有 `for` 循环，去除了 `while`、`do while` 循环，使用起来更加简洁。
 
 ```go
-# 永真循环
+// 永真循环
 for {
 		fmt.Printf("for: %v\n", "run....")
 	}
@@ -475,9 +475,38 @@ for {
 >
 > `goto`：通过标签进行代码间的 **无条件跳转**，在快速跳出循环、避免重复退出上有一定的帮助。
 
+- `Go` 数组
 
+> **数组** 是相同据类型的一组数据的集合，数组一旦定义长度不能变，数组可以通过下标（或叫索引）来访问元素。
 
+```go
+// 数组定义
+var variable_name [SIZE] variable_type 
+```
 
+- `Go` 切片
+
+> **切片（Slice）** 是一个拥有相同类型元素的可变长度的序列；可以理解为：可变长度的数组，其底层就是使用数组实现的，增加了自动扩容功能。
+
+```go
+//切片定义
+var identifier []type
+var slice []type = make([]type, len)
+slice := make([]type, len)
+make([]T, length, capacity)
+```
+
+**空（nil）切片**：一个切片在未初始化之前默认为 `nil`, 长度为0，容量为0。
+
+- `Go map`
+
+> `map` 是一种 `key:value`键值对的数据结构容器，其内部实现时哈希表（`hash`），是一种引用类型。
+
+```go
+// 定义
+var map_variable map[key_data_type] value_data_type
+map_variable = make(map[key_data_type] value_data_type)
+```
 
 
 

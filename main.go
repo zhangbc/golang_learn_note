@@ -30,4 +30,12 @@ func main() {
 	// 流程控制
 	fmt.Print("\n=======GoLang 基础之流程控制=====\n")
 	basic.TestController()
+
+	// 数组
+	fmt.Print("\n=======GoLang 基础之数组=====\n")
+	basic.TestArray()
+
+	// Map
+	fmt.Print("\n=======GoLang 基础之Map=====\n")
+	basic.TestMap()
 }
